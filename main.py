@@ -17,7 +17,7 @@ class cube(object):
     def move(self, dirx, diry):
         self.dirx = dirx
         self.diry = diry
-        self.pos(self.pos[0] + self.dirx, self.pos[1] + self.diry)
+        self.pos = (self.pos[0] + self.dirx, self.pos[1] + self.diry)
 
     def draw(self, surface, eyes=False):
         dis = self.w // self.rows
@@ -25,6 +25,15 @@ class cube(object):
         j = self.pos[1]
 
         pygame.draw.rect(surface, self.color, (i*dis + 1, j*dis + 1, dis - 2, dis - 2))
+
+        # Eyes
+        if eyes:
+            center = dis//2
+            radius = 3
+            circle_middle = (i*dis + center - radius, j*dis + 8)
+            circle_middle_2 = (i*dis + dis - radius*2, j*dis + 8)
+            pygame.draw.circle(surface, (0, 0, 0), circle_middle, radius)
+            pygame.draw.circle(surface, (0, 0, 0), circle_middle_2, radius)
 
 
 class snake(object):
@@ -144,7 +153,10 @@ def main():
     while True:
         pygame.time.delay(80)
         clock.tick(10)
+        s.move()
         redraw_window(board)
+
+    pass
 
 
 main()
