@@ -79,7 +79,7 @@ class snake(object):
             p = c.pos[:]
             if p in self.turns:
                 turn = self.turns[p]
-                c.move(turn[0, turn[1]])
+                c.move(turn[0], turn[1])
                 if i == len(self.body) - 1:
                     self.turns.pop(p)
             else:
@@ -134,7 +134,15 @@ def redraw_window(surface):
 
 
 def random_snack(rows, items):
-    pass
+    positions = items.body()
+
+    while True:
+        x = random.randrange(rows)
+        y = random.randrange(rows)
+
+        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
+            
+
 
 
 def message_box(subject, content):
@@ -151,7 +159,7 @@ def main():
     clock = pygame.time.Clock()
 
     while True:
-        pygame.time.delay(80)
+        pygame.time.delay(50)
         clock.tick(10)
         s.move()
         redraw_window(board)
