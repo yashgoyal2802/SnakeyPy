@@ -37,6 +37,16 @@ def draw_grid(w, rows, surface):
     # Size of grid
     sizeBtwn = w // rows
 
+    x = 0
+    y = 0
+    for x in range(rows):
+        x = x + sizeBtwn
+        y = y + sizeBtwn
+
+        # drawing a line
+        pygame.draw.line(surface, (255, 0, 0), (x, 0), (x, w))
+        pygame.draw.line(surface, (255, 0, 0), (0, y), (w, y))
+
 
 def redraw_window(surface):
 
