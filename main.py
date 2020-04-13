@@ -1,5 +1,7 @@
 import pygame
 from tkinter import *
+from tkinter import messagebox
+
 import math
 import random
 
@@ -95,20 +97,25 @@ class snake(object):
                     c.move(c.dirx, c.diry)
 
     def reset(self, pos):
-        pass
+        self.head = cube(pos)
+        self.body = []
+        self.body.append(self.head)
+        self.turns = {}
+        self.dirx = 0
+        self.diry = 1
 
     def add_cube(self):
         tail = self.body[-1]
         dx, dy = tail.dirx, tail.diry
 
         if dx == 1 and dy == 0:
-            self.body.append(cube((tail.pos[0]-1, tail.pos[1])))
+            self.body.append(cube((tail.pos[0] - 1, tail.pos[1])))
         elif dx == -1 and dy == 0:
-            self.body.append(cube((tail.pos[0]+1, tail.pos[1])))
+            self.body.append(cube((tail.pos[0] + 1, tail.pos[1])))
         elif dx == 0 and dy == 1:
-            self.body.append(cube((tail.pos[0], tail.pos[1]-1)))
+            self.body.append(cube((tail.pos[0], tail.pos[1] - 1)))
         elif dx == 0 and dy == -1:
-            self.body.append(cube((tail.pos[0], tail.pos[1]+1)))
+            self.body.append(cube((tail.pos[0], tail.pos[1] + 1)))
 
         self.body[-1].dirx = dx
         self.body[-1].diry = dy
@@ -154,15 +161,23 @@ def random_snack(rows, items):
         x = random.randrange(rows)
         y = random.randrange(rows)
 
-        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
+        if len(list(filter(lambda z: z.pos == (x, y), positions))) > 0:
             continue
         else:
             break
-    return (x,y)
+    return (x, y)
 
 
 def message_box(subject, content):
-    pass
+    obj = Tk()
+    obj.attributes("-topmost", True)
+    obj.withdraw()
+    messagebox.showinfo(subject, content)
+
+    try:
+        obj.destroy()
+    except:
+        pass
 
 
 def main():
@@ -185,9 +200,9 @@ def main():
             snack = cube(random_snack(rows, s), color=(0, 255, 0))
 
         for x in range(len(s.body)):
-            if s.body[x].pos in list(map(lambda z:z.pos, s.body[x+1:])):
+            if s.body[x].pos in list(map(lambda z: z.pos, s.body[x + 1:])):
                 print(f" Your Score = {len(s.body)}")
-                message_box()
+                message_box("You Lost!!", f"Your Score : {len(s.body)} \n Play Again..")
                 s.reset((10, 10))
                 break
 
