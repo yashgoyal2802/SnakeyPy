@@ -33,15 +33,14 @@ class snake(object):
 
 
 def draw_grid(w, rows, surface):
-
     # Size of grid
-    sizeBtwn = w // rows
+    sizebtwn = w // rows
 
     x = 0
     y = 0
-    for x in range(rows):
-        x = x + sizeBtwn
-        y = y + sizeBtwn
+    for l in range(rows):
+        x = x + sizebtwn
+        y = y + sizebtwn
 
         # drawing a line
         pygame.draw.line(surface, (255, 0, 0), (x, 0), (x, w))
@@ -49,7 +48,6 @@ def draw_grid(w, rows, surface):
 
 
 def redraw_window(surface):
-
     surface.fill((0, 0, 0))
     draw_grid(width, rows, surface)
 
@@ -78,6 +76,3 @@ def main():
         pygame.time.delay(50)
         clock.tick(10)
         redraw_window(board)
-
-    pass
-
