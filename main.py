@@ -50,7 +50,7 @@ def draw_grid(w, rows, surface):
 
 def redraw_window(surface):
 
-    board.fill((0, 0, 0))
+    surface.fill((0, 0, 0))
     draw_grid(width, rows, surface)
 
     # Update the Board
@@ -66,7 +66,7 @@ def message_box(subject, content):
 
 
 def main():
-    global width, rows, board
+    global width, rows
     width = 500
     rows = 20
     board = pygame.display.set_mode((width, width))
