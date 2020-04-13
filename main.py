@@ -39,3 +39,7 @@ def drawGrid(w, rows, surface):
 def redrawWindow(sueface):
     pass
 
+
+def randomSnack(rows, ites):
+    pass
+
