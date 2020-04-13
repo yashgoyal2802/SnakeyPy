@@ -137,9 +137,10 @@ def draw_grid(w, rows, surface):
 
 
 def redraw_window(surface):
-    global width, rows, s
+    global width, rows, s, snack
     surface.fill((0, 0, 0))
     s.draw(surface)
+    snack.draw(surface)
     draw_grid(width, rows, surface)
 
     # Update the Board
@@ -147,7 +148,7 @@ def redraw_window(surface):
 
 
 def random_snack(rows, items):
-    positions = items.body()
+    positions = items.body
 
     while True:
         x = random.randrange(rows)
@@ -165,7 +166,7 @@ def message_box(subject, content):
 
 
 def main():
-    global width, rows, s
+    global width, rows, s, snack
     width = 500
     rows = 20
     board = pygame.display.set_mode((width, width))
