@@ -5,8 +5,8 @@ import random
 
 
 class cube(object):
-    rows = 0
-    w = 0
+    rows = 20
+    w = 500
 
     def __init__(self, start, dirx=1, diry=0, color=(255, 0, 0)):
         self.pos = start
@@ -15,10 +15,16 @@ class cube(object):
         self.color = color
 
     def move(self, dirx, diry):
-        pass
+        self.dirx = dirx
+        self.diry = diry
+        self.pos(self.pos[0] + self.dirx, self.pos[1] + self.diry)
 
     def draw(self, surface, eyes=False):
-        pass
+        dis = self.w // self.rows
+        i = self.pos[0]
+        j = self.pos[1]
+
+        pygame.draw.rect(surface, self.color, (i*dis + 1, j*dis + 1, dis - 2, dis - 2))
 
 
 class snake(object):
