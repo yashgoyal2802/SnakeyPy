@@ -53,5 +53,6 @@ def main():
     height = 500
     rows = 20
     board = pygame.display.set_mode((width, height))
+    s = snake((255, 0, 0), (10, 10))
     pass
 
