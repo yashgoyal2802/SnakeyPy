@@ -57,6 +57,14 @@ class snake(object):
                     self.diry = 1
                     self.turns[self.head.pos[:]] = [self.dirx, self.diry]
 
+        for i, c in enumerate(self.body):
+            p = c.pos[:]
+            if p in self.turns:
+                turn = self.turns[p]
+                c.move(turn[0, turn[1]])
+                if i== len(self.body) - 1:
+                    self.turns.pop(p)
+
     def reset(self, pos):
         pass
 
