@@ -54,5 +54,11 @@ def main():
     rows = 20
     board = pygame.display.set_mode((width, height))
     s = snake((255, 0, 0), (10, 10))
+
+    clock = pygame.time.Clock()
+    # flag = True
+    while True:
+        pygame.time.delay(50)
+        clock.tick(10)
     pass
 
