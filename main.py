@@ -106,8 +106,9 @@ def draw_grid(w, rows, surface):
 
 
 def redraw_window(surface):
-    global width, rows
+    global width, rows, s
     surface.fill((0, 0, 0))
+    s.draw(surface)
     draw_grid(width, rows, surface)
 
     # Update the Board
@@ -123,11 +124,11 @@ def message_box(subject, content):
 
 
 def main():
-    global width, rows
+    global width, rows, s
     width = 500
     rows = 20
     board = pygame.display.set_mode((width, width))
-    # s = snake((255, 0, 0), (10, 10))
+    s = snake((255, 0, 0), (10, 10))
 
     clock = pygame.time.Clock()
 
