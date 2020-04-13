@@ -33,11 +33,15 @@ class snake(object):
 
 
 def draw_grid(w, rows, surface):
-    pass
+
+    # Size of grid
+    sizeBtwn = w // rows
 
 
 def redraw_window(surface):
-    draw_grid(surface)
+
+    board.fill((0, 0, 0))
+    draw_grid(width, rows, surface)
 
     # Update the Board
     pygame.display.update()
@@ -52,10 +56,10 @@ def message_box(subject, content):
 
 
 def main():
+    global width, rows, board
     width = 500
-    height = 500
     rows = 20
-    board = pygame.display.set_mode((width, height))
+    board = pygame.display.set_mode((width, width))
     s = snake((255, 0, 0), (10, 10))
 
     clock = pygame.time.Clock()
