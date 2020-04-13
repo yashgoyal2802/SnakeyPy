@@ -37,7 +37,10 @@ def draw_grid(w, rows, surface):
 
 
 def redraw_window(surface):
-    pass
+    draw_grid(surface)
+
+    # Update the Board
+    pygame.display.update()
 
 
 def random_snack(rows, items):
@@ -56,9 +59,11 @@ def main():
     s = snake((255, 0, 0), (10, 10))
 
     clock = pygame.time.Clock()
-    # flag = True
+
     while True:
         pygame.time.delay(50)
         clock.tick(10)
+        redraw_window(board)
+
     pass
 
