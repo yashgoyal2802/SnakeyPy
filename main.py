@@ -35,3 +35,7 @@ class snake(object):
 def drawGrid(w, rows, surface):
     pass
 
+
+def redrawWindow(sueface):
+    pass
+
