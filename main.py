@@ -31,4 +31,7 @@ class snake(object):
     def draw(self, surface):
         pass
 
-    
+
+def drawGrid(w, rows, surface):
+    pass
+
