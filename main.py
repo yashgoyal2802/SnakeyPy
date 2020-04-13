@@ -42,17 +42,17 @@ class snake(object):
                     self.diry = 0
                     self.turns[self.head.pos[:]] = [self.dirx, self.diry]
 
-                if keys[pygame.K_RIGHT]:
+                elif keys[pygame.K_RIGHT]:
                     self.dirx = 1
                     self.diry = 0
                     self.turns[self.head.pos[:]] = [self.dirx, self.diry]
 
-                if keys[pygame.K_UP]:
+                elif keys[pygame.K_UP]:
                     self.dirx = 0
                     self.diry = -1
                     self.turns[self.head.pos[:]] = [self.dirx, self.diry]
 
-                if keys[pygame.K_DOWN]:
+                elif keys[pygame.K_DOWN]:
                     self.dirx = 0
                     self.diry = 1
                     self.turns[self.head.pos[:]] = [self.dirx, self.diry]
