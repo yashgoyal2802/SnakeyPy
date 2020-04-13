@@ -46,3 +46,8 @@ def random_snack(rows, items):
 
 def message_box(subject, content):
     pass
+
+
+def main():
+    pass
+
