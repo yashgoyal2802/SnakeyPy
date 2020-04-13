@@ -49,5 +49,8 @@ def message_box(subject, content):
 
 
 def main():
+    width = 500
+    height = 500
+    board = pygame.display.set_mode((width, height))
     pass
 
