@@ -43,11 +43,12 @@ def draw_grid(w, rows, surface):
         y = y + sizebtwn
 
         # drawing a line
-        pygame.draw.line(surface, (255, 0, 0), (x, 0), (x, w))
-        pygame.draw.line(surface, (255, 0, 0), (0, y), (w, y))
+        pygame.draw.line(surface, (255, 255, 255), (x, 0), (x, w))
+        pygame.draw.line(surface, (255, 255, 255), (0, y), (w, y))
 
 
 def redraw_window(surface):
+    global width, rows
     surface.fill((0, 0, 0))
     draw_grid(width, rows, surface)
 
@@ -68,11 +69,14 @@ def main():
     width = 500
     rows = 20
     board = pygame.display.set_mode((width, width))
-    s = snake((255, 0, 0), (10, 10))
+    # s = snake((255, 0, 0), (10, 10))
 
     clock = pygame.time.Clock()
 
     while True:
-        pygame.time.delay(50)
+        pygame.time.delay(80)
         clock.tick(10)
         redraw_window(board)
+
+
+main()
