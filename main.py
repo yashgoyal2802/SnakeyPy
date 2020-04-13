@@ -20,7 +20,7 @@ class cube(object):
 
 class snake(object):
     body = []
-    turns = ()
+    turns = {}
 
     def __init__(self, color, pos):
         self.color = color
@@ -28,6 +28,34 @@ class snake(object):
         self.body.append(self.head)
         self.dirx = 0
         self.diry = 1
+
+    def move(self):
+        for event in pygame.event.get():
+            if event.type ==pygame.Quit:
+                pygame.quit()
+
+            keys = pygame.key.get_pressed()
+
+            for key in keys:
+                if keys[pygame.K_LEFT]:
+                    self.dirx = -1
+                    self.diry = 0
+                    self.turns[self.head.pos[:]] = [self.dirx, self.diry]
+
+                if keys[pygame.K_RIGHT]:
+                    self.dirx = 1
+                    self.diry = 0
+                    self.turns[self.head.pos[:]] = [self.dirx, self.diry]
+
+                if keys[pygame.K_UP]:
+                    self.dirx = 0
+                    self.diry = -1
+                    self.turns[self.head.pos[:]] = [self.dirx, self.diry]
+
+                if keys[pygame.K_DOWN]:
+                    self.dirx = 0
+                    self.diry = 1
+                    self.turns[self.head.pos[:]] = [self.dirx, self.diry]
 
     def reset(self, pos):
         pass
