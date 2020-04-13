@@ -110,6 +110,9 @@ class snake(object):
         elif dx == 0 and dy == -1:
             self.body.append(cube((tail.pos[0], tail.pos[1]+1)))
 
+        self.body[-1].dirx = dx
+        self.body[-1].diry = dy
+
     def draw(self, surface):
         for i, c in enumerate(self.body):
             if i == 0:
