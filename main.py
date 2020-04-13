@@ -24,14 +24,14 @@ class cube(object):
         i = self.pos[0]
         j = self.pos[1]
 
-        pygame.draw.rect(surface, self.color, (i*dis + 1, j*dis + 1, dis - 2, dis - 2))
+        pygame.draw.rect(surface, self.color, (i * dis + 1, j * dis + 1, dis - 2, dis - 2))
 
         # Eyes
         if eyes:
-            center = dis//2
+            center = dis // 2
             radius = 3
-            circle_middle = (i*dis + center - radius, j*dis + 8)
-            circle_middle_2 = (i*dis + dis - radius*2, j*dis + 8)
+            circle_middle = (i * dis + center - radius, j * dis + 8)
+            circle_middle_2 = (i * dis + dis - radius * 2, j * dis + 8)
             pygame.draw.circle(surface, (0, 0, 0), circle_middle, radius)
             pygame.draw.circle(surface, (0, 0, 0), circle_middle_2, radius)
 
@@ -49,7 +49,7 @@ class snake(object):
 
     def move(self):
         for event in pygame.event.get():
-            if event.type ==pygame.Quit:
+            if event.type == pygame.QUIT:
                 pygame.quit()
 
             keys = pygame.key.get_pressed()
@@ -80,17 +80,17 @@ class snake(object):
             if p in self.turns:
                 turn = self.turns[p]
                 c.move(turn[0, turn[1]])
-                if i== len(self.body) - 1:
+                if i == len(self.body) - 1:
                     self.turns.pop(p)
             else:
                 if c.dirx == -1 and c.pos[0] <= 0:
-                    c.pos = (c.rows-1, c.pos[1])
-                elif c.dirx == 1 and c.pos[0] >= c.rows-1:
+                    c.pos = (c.rows - 1, c.pos[1])
+                elif c.dirx == 1 and c.pos[0] >= c.rows - 1:
                     c.pos = (0, c.pos[1])
-                elif c.diry == 1 and c.pos[1] >= c.rows-1:
+                elif c.diry == 1 and c.pos[1] >= c.rows - 1:
                     c.pos = (c.pos[0], 0)
                 elif c.diry == -1 and c.pos[1] <= 0:
-                    c.pos = (c.pos[0], c.rows-1)
+                    c.pos = (c.pos[0], c.rows - 1)
                 else:
                     c.move(c.dirx, c.diry)
 
