@@ -25,21 +25,24 @@ class snake(object):
     def reset(self, pos):
         pass
 
-    def addCube(self):
+    def add_cube(self):
         pass
 
     def draw(self, surface):
         pass
 
 
-def drawGrid(w, rows, surface):
+def draw_grid(w, rows, surface):
     pass
 
 
-def redrawWindow(sueface):
+def redraw_window(surface):
     pass
 
 
-def randomSnack(rows, ites):
+def random_snack(rows, items):
     pass
 
+
+def message_box(subject, content):
+    pass
