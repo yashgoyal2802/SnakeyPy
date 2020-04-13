@@ -98,7 +98,17 @@ class snake(object):
         pass
 
     def add_cube(self):
-        pass
+        tail = self.body[-1]
+        dx, dy = tail.dirx, tail.diry
+
+        if dx == 1 and dy == 0:
+            self.body.append(cube((tail.pos[0]-1, tail.pos[1])))
+        elif dx == -1 and dy == 0:
+            self.body.append(cube((tail.pos[0]+1, tail.pos[1])))
+        elif dx == 0 and dy == 1:
+            self.body.append(cube((tail.pos[0], tail.pos[1]-1)))
+        elif dx == 0 and dy == -1:
+            self.body.append(cube((tail.pos[0], tail.pos[1]+1)))
 
     def draw(self, surface):
         for i, c in enumerate(self.body):
@@ -141,8 +151,10 @@ def random_snack(rows, items):
         y = random.randrange(rows)
 
         if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
-            
-
+            continue
+        else:
+            break
+    return (x,y)
 
 
 def message_box(subject, content):
@@ -155,6 +167,7 @@ def main():
     rows = 20
     board = pygame.display.set_mode((width, width))
     s = snake((255, 0, 0), (10, 10))
+    snack = cube(random_snack(rows, s), color=(0, 255, 0))
 
     clock = pygame.time.Clock()
 
@@ -162,6 +175,11 @@ def main():
         pygame.time.delay(50)
         clock.tick(10)
         s.move()
+
+        if s.body[0].pos == snack.pos:
+            s.add_cube()
+            snack = cube(random_snack(rows, s), color=(0, 255, 0))
+
         redraw_window(board)
 
     pass
