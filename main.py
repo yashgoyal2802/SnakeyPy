@@ -9,7 +9,10 @@ class cube(object):
     w = 0
 
     def __init__(self, start, dirx=1, diry=0, color=(255, 0, 0)):
-        pass
+        self.pos = start
+        self.dirx = 1
+        self.diry = 0
+        self.color = color
 
     def move(self, dirx, diry):
         pass
@@ -96,7 +99,7 @@ def draw_grid(w, rows, surface):
 
     x = 0
     y = 0
-    for l in range(rows):
+    for i in range(rows):
         x = x + sizebtwn
         y = y + sizebtwn
 
